@@ -1,42 +1,306 @@
+/* =========================
+   Global Base Styles
+========================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.65);
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
   margin: 0;
+  color: var(--text);
+  background: #0b0f17;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* =========================
+   Background Layout
+========================= */
+
+.appBg {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: #212121;
+  background-image:
+    radial-gradient(ellipse at 70% 10%, rgba(251, 251, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 90%, #58417d, 0%, transparent 100%),
+    radial-gradient(ellipse at 50% 50%, #8E4BEB 0%, transparent 70%);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.appOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.appContainer {
+  position: relative;
+  z-index: 1;
+
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 110px 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.rowFull {
+  width: 100%;
+}
+
+.rowSplit {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 22px;
+}
+
+@media (max-width: 900px) {
+  .rowSplit {
+    grid-template-columns: 1fr;
   }
+}
+
+/* =========================
+   Section 1 (Big Card)
+========================= */
+
+.section1Card {
+  width: 100%;
+  height: 180px;
+  border-radius: 20px;
+  background: #212121;
+  margin-bottom: 3rem;
+
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+.parentRow {
+  display: flex;
+  align-items: center;
+  padding: 30px 40px;
+  width: 100%;
+  height: 100%;
+}
+
+.leftBox,
+.rightBox {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* =========================
+   Divider Line
+========================= */
+
+.verticalLine {
+  width: 1px;
+  align-self: stretch;
+  background: rgba(155, 154, 154, 0.4);
+  margin: 0 30px;
+}
+
+/* =========================
+   LEFT BOX (Image + Details)
+========================= */
+
+.leftBox {
+  flex-direction: row;
+  gap: 24px;
+}
+
+/* Avatar outer container */
+.leftPart1 {
+  width: 180px;
+  height: 180px;
+  border-radius: 32px;
+  background: #1b1b1b;
+  position: relative;
+  top: -50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Avatar image (circle inside square container) */
+.profileImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #8E4BEB;
+  object-fit: cover;
+  display: block;
+}
+
+/* Details section */
+.leftPart2 {
+  margin-left: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Unused third part */
+.leftPart3 {
+  width: 0;
+}
+
+/* Text styles */
+.name {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.role {
+  margin: 5px 0 30px 0;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.socialRow {
+  display: flex;
+  gap: 16px;
+}
+
+.socialIcon {
+  color: rgb(198, 197, 197);
+  cursor: pointer;
+}
+
+.socialIcon:hover {
+  color: #8E4BEB;
+}
+
+/* =========================
+   RIGHT BOX (Email / Location / CV / Status)
+========================= */
+
+.rightBox {
+  gap:120px;
+  justify-content: center;
+}
+
+.infoGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.value {
+  margin-top: 6px;
+  font-size: 16px;
+  color: white;
+}
+
+.downloadRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.downloadIcon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  filter: invert(1);
+}
+
+
+
+/* =========================
+   Section 2 (Navbar)
+========================= */
+
+.navCard {
+  width: 200px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #212121;
+  padding: 40px 30px;
+  gap: 18px;
+}
+
+.navItem {
+  width: 100%;
+  height: 120px;
+  border: none;
+  cursor: pointer;
+
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-weight: 550;
+  color: rgb(198, 197, 197);
+  text-decoration: none;
+
+}
+
+
+/* .navItemActive { */
+  /* background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%); */
+/* } */
+
+.navItem:hover {
+  color: #8E4BEB;
+}
+
+/* =========================
+   Section 3 (Main Content Card)
+========================= */
+
+.sectionContainer{
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+.section3Card {
+  width: 100%;
+  min-height: 500px;
+
+  border-radius: 20px;
+  padding: 40px;
+
+  background: #1f1f1f;
+
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+
+  font-size: 24px;
+  font-weight: 600;
 }
