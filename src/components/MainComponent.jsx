@@ -1,8 +1,7 @@
 import Section1 from "./Section1";
 import Section2 from "./Section2";
-import Section3 from "./Section3";
 
-export default function MainComponent() {
+export default function MainComponent({ children }) {
   return (
     <main className="appBg">
       <div className="appOverlay" />
@@ -12,7 +11,7 @@ export default function MainComponent() {
           <Section1 />
           <div className="sectionContainer">
             <Section2 />
-            <Section3 />
+            {children}
           </div>
         </div>
       </div>
