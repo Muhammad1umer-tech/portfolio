@@ -3,6 +3,13 @@ export default function projects() {
 
   const projects = [
     {
+      id: 0,
+      title: "Serverless Event-Driven Backend on AWS",
+      badgeBottom: "AWS, Lambda, Cognito, API Gateway, Endpoints, S3, DynamoDB, IAM",
+      imageSrc: "/projects/architecture.png",
+      href: "https://github.com/Muhammad1umer-tech/serverless-web-architecture",
+    },
+    {
       id: 1,
       title: "Custom Postgress RAG with AWS infrastructure",
       badgeBottom: "AWS, networking, subnetting, API Gateway, NAT, IAM, S3, RDS, EC2",
